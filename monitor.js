@@ -1,4 +1,5 @@
-const os = require("node:os");
+import os from "node:os";
+import chalk from "chalk";
 
 function monitor() {
   // Take a snapshot
@@ -14,7 +15,9 @@ function monitor() {
         usage: calculateCPU(oldCpus[index], newCpus[index]) + "%",
       };
     });
+
     console.clear();
+    console.log(chalk.bgMagenta(`======System Stats======`));
     console.table(usage);
     const usedMemory = (
       (os.totalmem() - os.freemem()) /

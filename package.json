@@ -1,0 +1,24 @@
+{
+  "name": "nodejs-by-coder's-gyan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youngwolf0412/windows_task_manager_clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youngwolf0412/windows_task_manager_clone/issues"
+  },
+  "homepage": "https://github.com/youngwolf0412/windows_task_manager_clone#readme",
+  "dependencies": {
+    "chalk": "^5.4.1"
+  }
+}
