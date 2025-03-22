@@ -1,11 +1,25 @@
 import * as fs from "node:fs/promises";
+import path from "node:path";
 // import * as fs from "node:fs";
 
-async function deleteFolder(folderpath) {
+export async function listItems(listpath = "./") {
+  const items = await fs.readdir(listpath, { withFileTypes: true });
+  return items.map((item) => {
+    return {
+      name: item.name,
+      type: item.isDirectory() ? "folder" : "file",
+      path: path.join(import.meta.dirname, item.name),
+    };
+  });
+}
+
+listItems();
+
+export async function deleteFolder(folderpath) {
   await fs.rm(folderpath, { recursive: true });
 }
 
-async function deleteFile(filepath) {
+export async function deleteFile(filepath) {
   await fs.unlink(filepath);
 }
 
@@ -14,15 +28,15 @@ async function readFile(pathname) {
   console.log(data);
 }
 
-async function createFolder(foldername) {
+export async function createFolder(foldername) {
   await fs.mkdir(foldername, { recursive: true });
 }
 
-async function writeToFile(pathname, content = "") {
+export async function writeToFile(pathname, content = "") {
   await fs.appendFile(pathname, content);
 }
 
-async function createFile(pathname, content = "") {
+export async function createFile(pathname, content = "") {
   await fs.writeFile(pathname, content);
 }
 
@@ -35,8 +49,9 @@ async function getFileInfo(filepath) {
   };
 }
 
-getFileInfo("./hello.txt").then((data) => console.log(data));
-
+// createFolder("./custom/global/folder");
+// getFileInfo("./hello.txt").then((data) => console.log(data));
+// deleteFolder("./custom");
 // deleteFile("./hello.txt");
 // readFile("./hello.txt");
 
